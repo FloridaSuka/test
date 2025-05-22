@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.SeparatorMenuItem?>
+<VBox alignment="TOP_LEFT" maxHeight="500.0" maxWidth="800.0" spacing="15.0" styleClass="login" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AboutController">
+
+    <!-- MenuBar e bardhë -->
+    <MenuBar>
+        <menus>
+            <Menu mnemonicParsing="false" text="File">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="New" />
+                    <MenuItem mnemonicParsing="false" text="Open…" />
+                    <Menu mnemonicParsing="false" text="Open Recent" />
+                    <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem mnemonicParsing="false" text="Save" />
+                    <MenuItem mnemonicParsing="false" text="Save As…" />
+                    <MenuItem mnemonicParsing="false" text="Revert" />
+                    <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem mnemonicParsing="false" text="Preferences…" />
+                    <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem mnemonicParsing="false" text="Quit" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Undo" />
+                    <MenuItem mnemonicParsing="false" text="Redo" />
+                    <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem mnemonicParsing="false" text="Cut" />
+                    <MenuItem mnemonicParsing="false" text="Copy" />
+                    <MenuItem mnemonicParsing="false" text="Paste" />
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                    <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem mnemonicParsing="false" text="Select All" />
+                    <MenuItem mnemonicParsing="false" text="Unselect All" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+
+    <!-- Header me logo dhe emrin -->
+    <AnchorPane>
+        <HBox spacing="10">
+            <ImageView fx:id="logoImage" fitHeight="60.0" fitWidth="60.0" style="-fx-margin-left: auto;" />
+            <Label styleClass="header-label" />
+        </HBox>
+      <AnchorPane layoutY="-12.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header" stylesheets="@style.css">
+         <children>
+            <Text fill="#fffbfb" layoutX="133.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rreth Nesh">
+               <font>
+                  <Font name="Arial" size="36.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="41.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/ikona.png" />
+               </image>
+            </ImageView>
+            <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="Gjuha">
+               <items>
+                  <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
+                  <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
+               </items>
+            </MenuButton>
+         </children>
+      </AnchorPane>
+    </AnchorPane>
+
+    <!-- Përshkrimi -->
+    <Label maxWidth="700" prefHeight="33.0" prefWidth="657.0" styleClass="description-label" text="Ky projekt synon zhvillimin e një sistemi interaktiv për llogaritjen dhe analizën e statistikave të notave në arsimin parauniversitar." wrapText="true" />
+
+    <Label maxWidth="700" styleClass="description-label" stylesheets="@style.css" text="Përmes këtij sistemi, institucionet arsimore do të kenë mundësi të:" wrapText="true" />
+
+    <VBox spacing="5.0" styleClass="bullet-list">
+        <Label text="• Monitorojnë performancën e nxënësve në mënyrë efektive." />
+        <Label text="• Gjenerojnë raporte të personalizuara për çdo klasë, lëndë dhe periudhë kohore." />
+        <Label text="• Krijojnë analiza të detajuara për përmirësimin e cilësisë së mësimdhënies." />
+        <Label text="• Krahasojnë statistikat vjetore dhe periodike për të identifikuar trende dhe ndryshime." />
+    </VBox>
+
+    <!-- Grafiku për statistika me LineChart -->
+    <LineChart fx:id="lineChart" style="-fx-max-width: 700; -fx-max-height: 400;" title="Progresi i Notave në Periudha">
+        <xAxis>
+            <CategoryAxis label="Periudha" />
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Nota Mesatare" />
+        </yAxis>
+    </LineChart>
+
+    <!-- Informacioni shtesë në fund -->
+    <Label styleClass="footer-label" text="Data: Maj 2025" />
+</VBox>

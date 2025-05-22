@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RivendosFjalekaliminController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@../views/style.css" >
+            <children>
+                <AnchorPane layoutX="442.0" layoutY="85.0" prefHeight="350.0" prefWidth="287.0" styleClass="login-form">
+                    <children>
+                        <Button fx:id="btnLogin" layoutX="59.0" layoutY="274.0" mnemonicParsing="false" onAction="#handleChange" prefHeight="39.0" prefWidth="170.0" styleClass="login-button" text="%btnChangePass" />
+                        <TextField fx:id="txtUsername" layoutX="32.0" layoutY="65.0" prefHeight="39.0" prefWidth="224.0" promptText="%promptUsername" />
+                        <TextField fx:id="txtPassword" layoutX="32.0" layoutY="115.0" prefHeight="39.0" prefWidth="224.0" promptText="%promptOldPass" />
+                    <PasswordField fx:id="txtPassword1" layoutX="32.0" layoutY="165.0" prefHeight="39.0" prefWidth="224.0" promptText="%promptNewPass" />
+                    <PasswordField fx:id="txtPassword2" layoutX="32.0" layoutY="215.0" prefHeight="39.0" prefWidth="224.0" promptText="%promptConfirmPass" />
+                    </children>
+                </AnchorPane>
+                <Label fx:id="loginTitle" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="131.0" prefHeight="70.0" prefWidth="300.0" text="%loginTitle" textFill="WHITE">
+                    <font>
+                        <Font name="Colonna MT" size="56.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="178.0" fitWidth="200.0" layoutX="84.0" layoutY="229.0">
+                    <image>
+                        <Image url="@../images/ikona.png" />
+                    </image>
+                </ImageView>
+                <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="50.0" layoutY="27.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang">
+                    <items>
+                        <MenuItem fx:id="menuAL" mnemonicParsing="false" onAction="#handleAlbanianLanguage" text="ALB" />
+                        <MenuItem fx:id="menuEN" mnemonicParsing="false" onAction="#handleEnglishLanguage" text="ENG" />
+                    </items>
+                </MenuButton>
+                <fx:include source="globalView.fxml" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiIMesuesitController">
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <AnchorPane styleClass="login" stylesheets="@style.css">
+            <children>
+                <AnchorPane layoutY="-1.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header" stylesheets="@style.css">
+                    <children>
+                        <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
+                            <items>
+                                <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
+                                <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
+                            </items>
+                        </MenuButton>
+                        <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="31.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="21.0">
+                            <image>
+                                <Image url="@../images/ikona.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="103.0" layoutY="28.0" text="EduMetrics" textFill="WHITE" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="28.0">
+                            <font>
+                                <Font name="Colonna MT" size="40.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutY="164.0">
+                    <children>
+                        <AnchorPane layoutY="-1.0">
+                            <children>
+                                <TableView fx:id="tabelaMesuesit" layoutX="8.0" layoutY="14.0" prefHeight="313.0" prefWidth="374.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                        <TableColumn fx:id="kolEmri" prefWidth="120.0" text="%drejtorEmri" />
+                                        <TableColumn fx:id="kolMbiemri" prefWidth="120.0" text="%drejtorMbiemri" />
+                                        <TableColumn fx:id="kolEmail" prefWidth="150.0" text="%addUserLabelEmail" />
+                                        <TableColumn fx:id="kolTel" prefWidth="100.0" text="%drejtorTel" />
+                                        <TableColumn fx:id="kolRoli" prefWidth="100.0" text="%addUserLabelRole" />
+
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="377.0" layoutY="-1.0" prefHeight="17.0" prefWidth="0.0">
+                            <children>
+                                <Label layoutX="83.0" layoutY="0.0" prefHeight="17.0" prefWidth="119.0" text="%mesuesId" AnchorPane.rightAnchor="216.0" />
+                                <TextField fx:id="txtId" layoutX="217.0" layoutY="-4.0" AnchorPane.rightAnchor="43.66666666666666" />
+                                <Label layoutX="83.0" layoutY="35.0" text="%addUserLabelName" AnchorPane.rightAnchor="230.0" />
+                                <TextField fx:id="txtEmri" layoutX="217.0" layoutY="31.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="70.0" text="%addUserLabelSurname" AnchorPane.rightAnchor="230.0" />
+                                <TextField fx:id="txtMbiemri" layoutX="217.0" layoutY="66.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="105.0" text="%addUserLabelEmail" AnchorPane.rightAnchor="230.0" />
+                                <TextField fx:id="txtEmail" layoutX="217.0" layoutY="101.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="140.0" text="%drejtorTel" AnchorPane.rightAnchor="228.0" />
+                                <TextField fx:id="txtTel" layoutX="217.0" layoutY="136.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="175.0" text="%addUserLabelRole" AnchorPane.rightAnchor="228.0" />
+                                <TextField fx:id="txtRoli" layoutX="217.0" layoutY="171.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="210.0" prefHeight="17.0" prefWidth="47.0" text="%adresa" AnchorPane.rightAnchor="218.0" />
+                                <TextField fx:id="txtAdresa" layoutX="217.0" layoutY="206.0" AnchorPane.rightAnchor="43.333333333333314" />
+
+                                      <Button layoutX="83.0" layoutY="288.0" onAction="#fshijMesues" prefHeight="25.0" prefWidth="63.0" style="-fx-background-color: crimson;" text="%_fshij" />
+                                <Button layoutX="159.0" layoutY="288.0" onAction="#perditesoMesues" prefHeight="25.0" prefWidth="63.0" text="%_perditso" />
+                                <Button layoutX="302.0" layoutY="288.0" onAction="#shtoMesues" prefHeight="25.0" prefWidth="63.0" text="%_shto" />
+                            </children>
+                        </AnchorPane>
+                          <TextArea fx:id="raportiMesuesve" editable="false" layoutX="-6.0" layoutY="384.0" maxHeight="17.0" maxWidth="800.0" prefHeight="5.0" prefWidth="794.0" wrapText="true" />
+                    </children>
+                </AnchorPane>
+                <fx:include source="globalView.fxml" />
+            </children>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </AnchorPane>
+    </children>
+</VBox>

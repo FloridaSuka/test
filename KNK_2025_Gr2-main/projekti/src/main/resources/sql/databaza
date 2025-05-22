@@ -1,0 +1,284 @@
+SELECT * FROM Lenda
+SELECT * FROM Users
+SELECT * FROM Klasa
+SELECT * FROM Mesuesi
+SELECT * FROM Shkolla
+SELECT * FROM Nxenesit
+SELECT * FROM Notat
+DROP TABLE Notat
+SELECT * FROM Paralelja
+SELECT * FROM Drejtimi
+SELECT * FROM Adresa
+SELECT * FROM Perioda
+SELECT * FROM Mungesa
+SELECT * FROM Drejtor
+ALTER TABLE Drejtor DROP COLUMN roli;
+
+CREATE TABLE notat (
+    id SERIAL PRIMARY KEY,
+    nxenesi_id INTEGER NOT NULL,
+    lenda_id INTEGER NOT NULL,
+    mesuesi_id INTEGER NOT NULL,
+    drejtimi_id INTEGER NOT NULL,
+    klasa_id INTEGER NOT NULL,
+    paralelja_id INTEGER NOT NULL,
+    periudha_id INTEGER NOT NULL,
+    nota_pare INTEGER NOT NULL CHECK (nota_pare BETWEEN 1 AND 10),
+    nota_dyte INTEGER NOT NULL CHECK (nota_dyte BETWEEN 1 AND 10),
+
+    -- 🔗 Foreign Keys
+    FOREIGN KEY (nxenesi_id) REFERENCES Nxenesit(id) ON DELETE CASCADE,
+    FOREIGN KEY (lenda_id) REFERENCES Lenda(id) ON DELETE CASCADE,
+    FOREIGN KEY (mesuesi_id) REFERENCES Mesuesi(id) ON DELETE CASCADE,
+    FOREIGN KEY (drejtimi_id) REFERENCES Drejtimi(id) ON DELETE CASCADE,
+    FOREIGN KEY (klasa_id) REFERENCES Klasa(id) ON DELETE CASCADE,
+    FOREIGN KEY (paralelja_id) REFERENCES Paralelja(id) ON DELETE CASCADE,
+    FOREIGN KEY (periudha_id) REFERENCES Perioda(id) ON DELETE CASCADE
+);
+INSERT INTO notat (
+    nxenesi_id, lenda_id, mesuesi_id, drejtimi_id,
+    klasa_id, paralelja_id, periudha_id,
+    nota_pare, nota_dyte
+) VALUES
+-- Shembulli 1:
+(1, 2, 3, 1, 1, 1, 1, 8, 9),
+
+-- Shembulli 2:
+(2, 2, 3, 1, 1, 1, 2, 6, 7),
+
+-- Shembulli 3:
+(3, 1, 4, 2, 2, 2, 1, 10, 9);
+
+
+CREATE TABLE Mungesa (
+    id SERIAL PRIMARY KEY,
+    student_id INTEGER NOT NULL,
+    lenda_id INTEGER NOT NULL,
+    perioda_id INTEGER NOT NULL,
+    data_mungeses DATE NOT NULL,
+    arsyeja VARCHAR(255),
+
+    FOREIGN KEY (student_id) REFERENCES Nxenesit(id) ON DELETE CASCADE,
+    FOREIGN KEY (lenda_id) REFERENCES Lenda(id) ON DELETE CASCADE,
+    FOREIGN KEY (perioda_id) REFERENCES Perioda(id) ON DELETE CASCADE
+);
+
+DROP TABLE RelacioniNotaMesuesi
+CREATE TABLE RelacioniNotaMesuesi (
+    id SERIAL PRIMARY KEY,
+    nota_id INTEGER NOT NULL,
+    mesues_id INTEGER NOT NULL,
+    data_vendosjes TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    koment VARCHAR(255),
+
+    -- Krijimi i foreign keys për lidhjet me tabelat përkatëse
+    FOREIGN KEY (nota_id) REFERENCES Notat(id) ON DELETE CASCADE,
+    FOREIGN KEY (mesues_id) REFERENCES Mesuesi(id) ON DELETE CASCADE
+);
+
+
+DROP TABLE Mungesa
+CREATE TABLE Mungesa (
+    id SERIAL PRIMARY KEY,
+    student_id INTEGER NOT NULL,
+    lenda_id INTEGER NOT NULL,
+    perioda_id INTEGER NOT NULL,
+    data_mungeses DATE NOT NULL,
+    arsyeja VARCHAR(255) NOT NULL,
+
+    -- Krijimi i Foreign Keys për lidhjet me tabelat përkatëse
+    FOREIGN KEY (student_id) REFERENCES Nxenesit(id) ON DELETE CASCADE,
+    FOREIGN KEY (lenda_id) REFERENCES Lenda(id) ON DELETE CASCADE,
+    FOREIGN KEY (perioda_id) REFERENCES Perioda(id) ON DELETE CASCADE
+);
+
+
+
+DROP TABLE Mesimi
+CREATE TABLE Mesimi (
+    lenda_id INTEGER NOT NULL,
+    profesori_id INTEGER NOT NULL,
+    klasa_id INTEGER NOT NULL,
+    drejtimi_id INTEGER NOT NULL,
+
+    -- Krijimi i foreign keys për lidhjet
+    FOREIGN KEY (lenda_id) REFERENCES Lenda(id) ON DELETE CASCADE,
+    FOREIGN KEY (profesori_id) REFERENCES Mesuesi(id) ON DELETE CASCADE,
+    FOREIGN KEY (klasa_id) REFERENCES Klasa(id) ON DELETE CASCADE,
+    FOREIGN KEY (drejtimi_id) REFERENCES Drejtimi(id) ON DELETE CASCADE,
+
+    -- Krijimi i çelësit primar për kombinimin e kolonave
+    PRIMARY KEY (lenda_id, profesori_id, klasa_id, drejtimi_id)
+);
+
+CREATE TABLE Drejtor (
+    id SERIAL PRIMARY KEY,
+    emri VARCHAR(100) NOT NULL,
+    mbiemri VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    tel VARCHAR(15) UNIQUE NOT NULL,
+    roli VARCHAR(50) NOT NULL,
+    adresa_id INTEGER NOT NULL,
+    shkolla_id INTEGER NOT NULL,
+
+    FOREIGN KEY (adresa_id) REFERENCES Adresa(id) ON DELETE CASCADE,
+    FOREIGN KEY (shkolla_id) REFERENCES Shkolla(id) ON DELETE CASCADE
+);
+INSERT INTO Drejtor (emri, mbiemri, email, tel, roli, adresa_id, shkolla_id)
+VALUES ('Blerim', 'Gashi', 'blerim.gashi@example.com', '+38349123456', 'Drejtor i Shkollës', 1, 1);
+
+
+DROP TABLE Notat
+CREATE TABLE notat (
+    id SERIAL PRIMARY KEY,
+    nxenesi_id INTEGER NOT NULL,
+    lenda_id INTEGER NOT NULL,
+    mesuesi_id INTEGER NOT NULL,
+    drejtimi_id INTEGER NOT NULL,
+    klasa_id INTEGER NOT NULL,
+    paralelja_id INTEGER NOT NULL,
+    periudha_id INTEGER NOT NULL,
+    nota_pare INTEGER NOT NULL CHECK (nota_pare BETWEEN 1 AND 10),
+    nota_dyte INTEGER NOT NULL CHECK (nota_dyte BETWEEN 1 AND 10),
+
+    -- 🔗 Foreign Keys
+    FOREIGN KEY (nxenesi_id) REFERENCES nxenesit(id) ON DELETE CASCADE,
+    FOREIGN KEY (lenda_id) REFERENCES lendet(id) ON DELETE CASCADE,
+    FOREIGN KEY (mesuesi_id) REFERENCES mesuesit(id) ON DELETE CASCADE,
+    FOREIGN KEY (drejtimi_id) REFERENCES drejtimet(id) ON DELETE CASCADE,
+    FOREIGN KEY (klasa_id) REFERENCES klasat(id) ON DELETE CASCADE,
+    FOREIGN KEY (paralelja_id) REFERENCES paraleljet(id) ON DELETE CASCADE,
+    FOREIGN KEY (periudha_id) REFERENCES periudhat(id) ON DELETE CASCADE
+);
+INSERT INTO Users (name,surname,email,username,password,role)
+VALUES ('Florida','Suka','florida.suka@gmail.com','floridaa','admin','admin');
+
+DROP TABLE Lenda
+CREATE TABLE Lenda (
+    id SERIAL PRIMARY KEY,
+    emri VARCHAR(100) NOT NULL,
+    drejtimi_id INTEGER NOT NULL,
+    perioda_id INTEGER NOT NULL,
+    mesuesi_id INTEGER NOT NULL,
+
+    -- Krijimi i foreign keys për lidhjet
+    FOREIGN KEY (drejtimi_id) REFERENCES Drejtimi(id) ON DELETE CASCADE,
+    FOREIGN KEY (perioda_id) REFERENCES Perioda(id) ON DELETE CASCADE,
+    FOREIGN KEY (mesuesi_id) REFERENCES Mesuesi(id) ON DELETE CASCADE
+);
+INSERT INTO Lenda (emri, drejtimi_id, perioda_id, mesuesi_id)
+VALUES ('Programimi ne Java', 4, 1, 1);
+
+
+DROP TABLE Klasa
+CREATE TABLE Klasa (
+    id SERIAL PRIMARY KEY,
+    niveli INTEGER NOT NULL,
+    shkolla_id INTEGER NOT NULL,
+    paralelja_id INTEGER NOT NULL,
+    mesuesi_id INTEGER NOT NULL,
+    drejtimi_id INTEGER NOT NULL,
+
+    -- Krijimi i foreign keys për lidhjet
+    FOREIGN KEY (shkolla_id) REFERENCES Shkolla(id) ON DELETE CASCADE,
+    FOREIGN KEY (paralelja_id) REFERENCES Paralelja(id) ON DELETE CASCADE,
+    FOREIGN KEY (mesuesi_id) REFERENCES Mesuesi(id) ON DELETE CASCADE,
+    FOREIGN KEY (drejtimi_id) REFERENCES Drejtimi(id) ON DELETE CASCADE
+);
+INSERT INTO Klasa (niveli, shkolla_id, paralelja_id, mesuesi_id, drejtimi_id)
+VALUES (10, 1, 1, 1, 1);
+
+DROP TABLE Perioda
+CREATE TABLE Perioda (
+    id SERIAL PRIMARY KEY,
+    emri VARCHAR(100) NOT NULL,
+    data_fillimit DATE NOT NULL,
+    data_mbarimit DATE NOT NULL
+);
+INSERT INTO Perioda (emri, data_fillimit, data_mbarimit)
+VALUES ('2', '2025-06-01', '2025-09-30');
+
+
+DROP TABLE Nxenesit
+CREATE TABLE Nxenesit (
+    id SERIAL PRIMARY KEY,
+    emri VARCHAR(100) NOT NULL,
+    mbiemri VARCHAR(100) NOT NULL,
+    datelindja DATE NOT NULL,
+    gjinia CHAR(1) CHECK (gjinia IN ('M', 'F')),
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(15) UNIQUE NOT NULL,
+    adresa_id INTEGER NOT NULL,
+
+    -- Krijimi i foreign key për adresën
+    FOREIGN KEY (adresa_id) REFERENCES Adresa(id) ON DELETE CASCADE
+);
+INSERT INTO Nxenesit (emri, mbiemri, datelindja, gjinia, email, phone, adresa_id)
+VALUES ('Arben', 'Krasniqi', '2002-05-21', 'M', 'arben.krasniqi@example.com', '044123456', 1);
+SELECT * FROM Nxenesit
+
+
+DROP TABLE Punonjesit
+CREATE TABLE Mesuesi (
+    id SERIAL PRIMARY KEY,
+    emri VARCHAR(100) NOT NULL,
+    mbiemri VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    tel VARCHAR(15) UNIQUE NOT NULL,
+    roli VARCHAR(50) NOT NULL,
+    adresa_id INTEGER NOT NULL,
+
+    -- Krijimi i foreign key për adresën
+    FOREIGN KEY (adresa_id) REFERENCES Adresa(id) ON DELETE CASCADE
+);
+INSERT INTO Mesuesi (emri, mbiemri, email, tel, roli, adresa_id)
+VALUES ('Arben', 'Krasniqi', 'arben.krasniqi@example.com', '+38344123456', 'Profesor Informatike', 1);
+
+
+DROP TABLE Drejtimi
+CREATE TABLE Drejtimi (
+    id SERIAL PRIMARY KEY,
+    emri VARCHAR(100) NOT NULL,
+    shkolla_id INTEGER NOT NULL,
+    paralelja_id INTEGER NOT NULL,
+
+    -- Krijimi i Foreign Keys
+    FOREIGN KEY (shkolla_id) REFERENCES Shkolla(id) ON DELETE CASCADE,
+    FOREIGN KEY (paralelja_id) REFERENCES Paralelja(id) ON DELETE CASCADE
+);
+INSERT INTO Drejtimi (emri, shkolla_id, paralelja_id)
+VALUES ('Natyror', 2, 2);
+
+
+
+DROP TABLE Shkolla
+CREATE TABLE Shkolla (
+    id SERIAL PRIMARY KEY,
+    emri VARCHAR(150) NOT NULL,
+    tel VARCHAR(15) UNIQUE NOT NULL,
+    adresa_id INTEGER NOT NULL,
+
+    -- Krijimi i foreign key për lidhjen me tabelën Adresa
+    FOREIGN KEY (adresa_id) REFERENCES Adresa(id) ON DELETE CASCADE
+);
+INSERT INTO Shkolla (emri, tel, adresa_id)
+VALUES ('Shkolla Fillore "Naim Frashëri"', '038123456', 1);
+
+DROP TABLE Paralelja
+CREATE TABLE Paralelja (
+    id SERIAL PRIMARY KEY,
+    emri VARCHAR(100) NOT NULL
+);
+INSERT INTO Paralelja (emri)
+VALUES ('A');
+
+DROP TABLE Adresa
+CREATE TABLE Adresa (
+    id SERIAL PRIMARY KEY,
+    qyteti VARCHAR(100) NOT NULL,
+    rruga VARCHAR(150) NOT NULL,
+    kodi_postar VARCHAR(10) NOT NULL
+);
+INSERT INTO Adresa (qyteti, rruga, kodi_postar)
+VALUES ('Prishtinë', 'Rruga e Dëshmorëve', '10000');
+

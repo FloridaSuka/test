@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<VBox xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ShtoUserController">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open…" />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As…" />
+                  <MenuItem mnemonicParsing="false" text="Revert" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Preferences…" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Undo" />
+                  <MenuItem mnemonicParsing="false" text="Redo" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Select All" />
+                  <MenuItem mnemonicParsing="false" text="Unselect All" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@../views/style.css" >
+         <children>
+            <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="50.0" layoutY="27.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang">
+               <items>
+                  <MenuItem fx:id="menuAL" mnemonicParsing="false" text="ALB" />
+                  <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
+               </items>
+            </MenuButton>
+            <HBox layoutX="200.0" layoutY="14.0" spacing="10">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="%addUserWindowTitle" textFill="white">
+                     <font>
+                        <Font name="Colonna MT" size="56.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+
+                  <ImageView fitHeight="56.0" fitWidth="76.0">
+                     <image>
+                        <Image url="@../images/ikona.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+
+            <!-- TextFields with translated placeholders -->
+            <TextField fx:id="txtEmri" layoutX="400.0" layoutY="110.0" prefHeight="30.0" prefWidth="310.0" promptText="%addUserPlaceholderName" />
+            <TextField fx:id="txtMbiemri" layoutX="400.0" layoutY="150.0" prefHeight="30.0" prefWidth="310.0" promptText="%addUserPlaceholderSurname" />
+            <TextField fx:id="txtEmail" layoutX="400.0" layoutY="190.0" prefHeight="30.0" prefWidth="310.0" promptText="%addUserPlaceholderEmail" />
+            <TextField fx:id="txtPerdoruesi" layoutX="400.0" layoutY="230.0" prefHeight="30.0" prefWidth="310.0" promptText="%addUserPlaceholderUsername" />
+            <PasswordField fx:id="txtFjalekalimi" layoutX="400.0" layoutY="270.0" prefHeight="30.0" prefWidth="310.0" promptText="%addUserPlaceholderPassword" />
+            <PasswordField fx:id="txtFjalekalimi2" layoutX="400.0" layoutY="310.0" prefHeight="30.0" prefWidth="310.0" promptText="%addUserPlaceholderRepeatPassword" />
+
+            <!-- Labels -->
+            <Label layoutX="90.0" layoutY="110.0" prefHeight="30.0" prefWidth="240.0" text="%addUserLabelName" />
+            <Label layoutX="90.0" layoutY="150.0" prefHeight="30.0" prefWidth="240.0" text="%addUserLabelSurname" />
+            <Label layoutX="90.0" layoutY="230.0" prefHeight="30.0" prefWidth="240.0" text="%addUserLabelUsername" />
+            <Label layoutX="90.0" layoutY="190.0" prefHeight="30.0" prefWidth="240.0" text="%addUserLabelEmail" />
+            <Label layoutX="90.0" layoutY="270.0" prefHeight="30.0" prefWidth="240.0" text="%addUserLabelPassword" />
+            <Label layoutX="90.0" layoutY="310.0" prefHeight="30.0" prefWidth="240.0" text="%addUserLabelRepeatPassword" />
+            <Label layoutX="90.0" layoutY="350.0" prefHeight="30.0" prefWidth="240.0" text="%addUserLabelRole" />
+
+            <Button layoutX="482.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleRegister" prefHeight="56.0" prefWidth="150.0" styleClass="record-button" text="%addUserButtonRegister" textFill="WHITE" />
+
+            <!-- Radio Buttons -->
+            <RadioButton fx:id="radioDrejtor" layoutX="400.0" layoutY="350.0" mnemonicParsing="false" text="%addUserRadioDirector" textFill="WHITE" />
+            <RadioButton fx:id="radioMesues" layoutX="524.0" layoutY="350.0" mnemonicParsing="false" text="%addUserRadioTeacher" textFill="WHITE" />
+            <RadioButton fx:id="radioNxenes" layoutX="642.0" layoutY="350.0" mnemonicParsing="false" text="%addUserRadioStudent" textFill="WHITE" />
+
+            <Button layoutX="720.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="52.0" styleClass="button-close" text="%addUserButtonClose" textFill="#db1616" />
+            <fx:include source="globalView.fxml" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

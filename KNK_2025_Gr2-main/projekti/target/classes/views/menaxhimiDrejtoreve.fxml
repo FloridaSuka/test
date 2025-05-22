@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fillWidth="false" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiDrejtoreveController">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu text="File">
+               <items>
+                  <MenuItem fx:id="menuNew" onAction="#handleNew" text="New" />
+                  <Menu fx:id="menuOpen" onAction="#handleOpen" text="Open…" />
+                  <SeparatorMenuItem />
+                  <MenuItem fx:id="menuQuit" onAction="#handleQuit" text="Quit" />
+               </items>
+            </Menu>
+            <Menu text="Edit">
+               <items>
+                  <MenuItem fx:id="menuUndo" onAction="#handleUndo" text="Undo" />
+                  <MenuItem fx:id="menuRedo" onAction="#handleRedo" text="Redo" />
+                  <MenuItem fx:id="menuCut" onAction="#handleCut" text="Cut" />
+                  <MenuItem fx:id="menuCopy" onAction="#handleCopy" text="Copy" />
+                  <MenuItem fx:id="menuPaste" onAction="#handlePaste" text="Paste" />
+                  <MenuItem fx:id="menuSelectAll" onAction="#handleSelectAll" text="Select All" />
+               </items>
+            </Menu>
+            <Menu text="Help">
+               <items>
+                  <MenuItem fx:id="menuHelp" onAction="#handleHelp" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>      <AnchorPane styleClass="login" stylesheets="@style.css">
+         <children>
+            <AnchorPane layoutY="-1.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header" stylesheets="@style.css">
+               <children>
+                  <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
+                     <items>
+                        <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
+                        <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
+                     </items>
+                  </MenuButton>
+                  <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="31.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="21.0">
+                     <image>
+                        <Image url="@../images/ikona.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="103.0" layoutY="28.0" text="EduMetrics" textFill="WHITE" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="28.0">
+                     <font>
+                        <Font name="Colonna MT" size="40.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="164.0">
+               <children>
+                  <AnchorPane layoutY="-1.0">
+                  </AnchorPane>
+                  <AnchorPane layoutX="148.0" layoutY="-47.0" prefHeight="382.0" prefWidth="646.0">
+                     <children>
+                        <Label layoutX="61.0" layoutY="76.0" text="%shkollaId" AnchorPane.rightAnchor="527.6666666666666" />
+                        <TextField fx:id="txtIdShkolla" layoutX="213.0" layoutY="72.0" prefHeight="25.0" prefWidth="214.0" AnchorPane.rightAnchor="219.0" />
+                        <Label layoutX="8.0" layoutY="106.0" text="%addUserLabelName" AnchorPane.rightAnchor="524.0" />
+                        <TextField fx:id="txtEmri" layoutX="213.0" layoutY="102.0" prefHeight="25.0" prefWidth="214.0" AnchorPane.rightAnchor="219.0" />
+                        <Label layoutX="65.0" layoutY="165.0" text="%drejtorTel" AnchorPane.rightAnchor="519.6666666666666" />
+                        <TextField fx:id="txtTel" layoutX="213.0" layoutY="161.0" prefHeight="25.0" prefWidth="214.0" AnchorPane.rightAnchor="219.0" />
+                        <Button layoutX="492.0" layoutY="178.0" onAction="#fshijDrejtor" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: crimson;" text="%_fshij" />
+                        <Button layoutX="492.0" layoutY="211.0" onAction="#perditesoDrejtor" prefHeight="25.0" prefWidth="89.0" text="%_perditso" />
+                        <Button layoutX="492.0" layoutY="251.0" onAction="#shtoDrejtor" prefHeight="25.0" prefWidth="89.0" text="%_shto" />
+                        <Label layoutX="59.0" layoutY="44.0" text="%drejtorId" />
+                        <TextField fx:id="txtId" layoutX="213.0" layoutY="40.0" prefHeight="25.0" prefWidth="214.0" />
+                        <Label layoutX="61.0" layoutY="134.0" text="%addUserLabelSurname" />
+                        <TextField fx:id="txtMbiemri" layoutX="213.0" layoutY="132.0" prefHeight="25.0" prefWidth="214.0" />
+                        <Label layoutX="65.0" layoutY="194.0" text="%addUserLabelEmail" />
+                        <TextField fx:id="txtEmail" layoutX="214.0" layoutY="191.0" prefHeight="25.0" prefWidth="214.0" />
+                        <Label layoutX="65.0" layoutY="224.0" text="%adresa" />
+                        <TextField fx:id="txtAdresa" layoutX="214.0" layoutY="221.0" prefHeight="25.0" prefWidth="214.0" />
+                        <Label layoutX="65.0" layoutY="255.0" text="%zip" />
+                        <TextField fx:id="txtzip" layoutX="214.0" layoutY="251.0" prefHeight="25.0" prefWidth="214.0" />
+
+                     </children>
+                  </AnchorPane>
+               </children>
+
+            </AnchorPane>
+            <fx:include source="globalView.fxml" />
+
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </AnchorPane>
+
+   </children>
+</VBox>

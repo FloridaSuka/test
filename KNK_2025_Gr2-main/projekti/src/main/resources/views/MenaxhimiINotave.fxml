@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NotatController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    <AnchorPane prefHeight="500.0" prefWidth="800.0" styleClass="login" stylesheets="@style.css">
+        <children>
+            <!-- Header -->
+            <HBox layoutX="30.0" layoutY="20.0" spacing="20">
+                <ImageView fitHeight="63.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/ikona.png" />
+                    </image>
+                </ImageView>
+                <Label style="-fx-font-size: 28px; -fx-text-fill: white; -fx-font-weight: bold;" text="%menaxhimiNotave" />
+            </HBox>
+
+            <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language"
+                        text="%txtLang" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
+                <items>
+                    <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
+                    <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
+                </items>
+            </MenuButton>
+
+            <!-- Raporti i Notave -->
+            <Label layoutX="30.0" layoutY="227.0" style="-fx-font-size: 18px; -fx-text-fill: white;" text="%raportiNotave" />
+            <ListView fx:id="listaNotave" layoutX="18.0" layoutY="260.0" prefHeight="219.0" prefWidth="740.0" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtLenda" layoutX="372.0" layoutY="106.0" prefHeight="25.0" prefWidth="209.0" promptText="%lenda" style="-fx-background-color: white; -fx-text-fill: black;" />
+            <TextField fx:id="nota1" layoutX="588.0" layoutY="106.0" prefHeight="25.0" prefWidth="58.0" promptText="%nota1" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <TextField fx:id="nota2" layoutX="663.0" layoutY="106.0" prefHeight="25.0" prefWidth="58.0" promptText="%nota2" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <Button layoutX="483.0" layoutY="177.0" onAction="#pastroFushat" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="%pastroFushat" />
+            <Button layoutX="588.0" layoutY="177.0" onAction="#regjistroNota" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="%regjistroNotat" />
+
+            <Button layoutX="373.0" layoutY="177.0" onAction="#llogaritMesataren" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #2980b9; -fx-text-fill: white;" text="%llogaritMesataren" />
+            <ListView fx:id="raportiStatistik" prefHeight="150.0" prefWidth="400.0" />
+
+            <ComboBox fx:id="comboPeriudha" layoutX="372.0" layoutY="142.0" prefHeight="25.0" prefWidth="87.0" promptText="%periudha"
+                      style="-fx-background-color: white; -fx-text-fill: #000000;">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="1" />
+                        <String fx:value="2" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            <TextField fx:id="txtEmriNxenesit" layoutX="56.0" layoutY="106.0" prefHeight="25.0" prefWidth="150.0" promptText="%emriNxenesit" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtIdNxenesit" layoutX="222.0" layoutY="106.0" prefHeight="25.0" prefWidth="129.0" promptText="%IdNxenesit" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtEmriMesuesit" layoutX="56.0" layoutY="142.0" prefHeight="25.0" prefWidth="150.0" promptText="%emriMesuesit" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <TextField fx:id="txtIdMesuesit" layoutX="222.0" layoutY="142.0" prefHeight="25.0" prefWidth="129.0" promptText="%mesuesId" style="-fx-background-color: white; -fx-text-fill: #000000;" />
+            <!-- Drejtimi -->
+            <Label layoutX="83.0" layoutY="280.0" text="Drejtimi:" />
+            <ComboBox fx:id="cmbDrejtimi" layoutX="470.0" layoutY="142.0" prefHeight="25.0" prefWidth="78.0" promptText="%drejtimi">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Shoqëror" />
+                        <String fx:value="Natyror" />
+                        <String fx:value="Ekonomik" />
+                        <String fx:value="Teknik" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Paralelja -->
+            <Label layoutX="83.0" layoutY="315.0" text="%paralelja" />
+            <ComboBox fx:id="cmbParalelja" layoutX="564.0" layoutY="142.0" prefHeight="25.0" prefWidth="78.0" promptText="%paralelja">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="A" />
+                        <String fx:value="B" />
+                        <String fx:value="C" />
+                        <String fx:value="D" />
+                        <String fx:value="E" />
+                        <String fx:value="F" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Klasa -->
+            <Label layoutX="83.0" layoutY="350.0" text="%klasa" />
+            <ComboBox fx:id="cmbKlasa" layoutX="656.0" layoutY="142.0" prefHeight="25.0" prefWidth="87.0" promptText="%klasa">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="10" />
+                        <String fx:value="11" />
+                        <String fx:value="12" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <HBox layoutX="58.0" layoutY="180.0" spacing="20">
+                <Label style="-fx-text-fill: white;" text="%mesatarja" />
+                <Label fx:id="lblMesatarja" style="-fx-text-fill: white;" />
+            </HBox>
+
+            <HBox layoutX="228.0" layoutY="180.0" spacing="20">
+                <Label style="-fx-text-fill: white;" text="%notaFinale" />
+                <Label fx:id="lblNotaFinale" style="-fx-text-fill: white;" />
+            </HBox>
+            <fx:include source="globalView.fxml" />
+        </children>
+    </AnchorPane>
+    </children>
+</VBox>

@@ -1,0 +1,97 @@
+package controllers;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import models.dto.update.UpdateUser;
+import services.UserService;
+import utils.SceneLocator;
+
+import java.util.Locale;
+
+public class RivendosFjalekaliminController {
+
+    @FXML
+    private TextField txtUsername;
+
+    @FXML
+    private TextField txtPassword;
+
+    @FXML
+    private PasswordField txtPassword1;
+
+    @FXML
+    private PasswordField txtPassword2;
+
+    private final UserService userService = new UserService();
+
+    @FXML
+    void handleChange(ActionEvent event) {
+        String username = txtUsername.getText().trim();
+        String verificationCode = txtPassword.getText().trim();
+        String newPassword = txtPassword1.getText().trim();
+        String confirmPassword = txtPassword2.getText().trim();
+
+        // ✅ Validimet bazë
+        if (!validateInputs(username, verificationCode, newPassword, confirmPassword)) return;
+
+        // ✅ Verifikimi në databazë
+        if (userService.verifyUser(username, verificationCode)) {
+            UpdateUser updateUser = new UpdateUser(username, newPassword, verificationCode);
+
+            if (userService.updatePassword(updateUser)) {
+                showAlert(Alert.AlertType.INFORMATION, "Sukses!", "Fjalëkalimi u ndryshua me sukses!");
+                Stage stage = (Stage) txtUsername.getScene().getWindow();
+                SceneLocator.locate(stage, SceneLocator.LOGIN_PAGE);
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Gabim!", "Ndryshimi i fjalëkalimit dështoi.");
+            }
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Gabim!", "Përdoruesi ose kodi i verifikimit është i pasaktë.");
+        }
+    }
+
+    private boolean validateInputs(String username, String verificationCode, String newPassword, String confirmPassword) {
+        if (username.isEmpty() || verificationCode.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+            showAlert(Alert.AlertType.WARNING, "Gabim!", "Ju lutem plotësoni të gjitha fushat.");
+            return false;
+        }
+
+        if (!newPassword.equals(confirmPassword)) {
+            showAlert(Alert.AlertType.ERROR, "Gabim!", "Fjalëkalimet nuk përputhen!");
+            return false;
+        }
+
+        if (!newPassword.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$")) {
+            showAlert(Alert.AlertType.ERROR, "Gabim!", "Fjalëkalimi duhet të përmbajë shkronja të mëdha, të vogla dhe numra!");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    @FXML
+    void handleEnglishLanguage(ActionEvent event) {
+        Locale.setDefault(new Locale("en"));
+
+        Stage stage = (Stage) menuLanguage.getScene().getWindow();
+        SceneLocator.locate(stage, SceneLocator.LOGIN_PAGE);
+    }
+
+    @FXML
+    void handleAlbanianLanguage(ActionEvent event) {
+        Locale.setDefault(new Locale("sq"));
+
+        Stage stage = (Stage) menuLanguage.getScene().getWindow();
+        SceneLocator.locate(stage, SceneLocator.LOGIN_PAGE);
+    }
+}

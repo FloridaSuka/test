@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.6"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.GlobalController">
+
+    <Button id="btn-back" layoutX="14.0" layoutY="111.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="45.0" style="-fx-background-color: transparent;" stylesheets="@style.css" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="111.0" onAction="#handleGoBack">
+        <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0"  pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../images/arrow-left-solid (1).png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+
+
+
+</AnchorPane>

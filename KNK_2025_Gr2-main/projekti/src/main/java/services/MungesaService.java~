@@ -1,0 +1,60 @@
+package services;
+
+import database.DBConnector;
+import models.Mungesa;
+import models.dto.create.CreateMesuesi;
+import models.dto.create.CreateMungesa;
+import repositories.MesuesiRepository;
+import repositories.MungesatRepository;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+public class MungesaService {
+    private final MungesatRepository repository = new MungesatRepository();
+
+    public boolean shto(int studentId, int lendaId, int periodaId, Date data, String arsyeja) {
+        String sql = "INSERT INTO Mungesa(student_id, lenda_id, perioda_id, data_mungeses, arsyeja) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, studentId);
+            stmt.setInt(2, lendaId);
+            stmt.setInt(3, periodaId);
+            stmt.setDate(4, data);
+            stmt.setString(5, arsyeja);
+
+            return stmt.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println("❌ Gabim gjatë shtimit të mungesës: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean perditeso(int id, CreateMungesa mungesa) {
+        Integer studentId = repository.gjejId(mungesa.emriNxenesi, "Nxenesit");
+        Integer lendaId = repository.gjejId(mungesa.emriLendes, "Lenda");
+        Integer periodaId = repository.gjejId(mungesa.emriPerioda, "Perioda");
+
+        if (studentId == null || lendaId == null || periodaId == null) return false;
+        return repository.perditeso(id, studentId, lendaId, periodaId, mungesa.data, mungesa.arsyeja);
+    }
+
+    public boolean fshij(int id) {
+        return repository.fshij(id);
+    }
+
+    public static List<Mungesa> gjejTeGjithaMungesat() {
+        return repository.gjejTeGjithaMungesat();
+    }
+}

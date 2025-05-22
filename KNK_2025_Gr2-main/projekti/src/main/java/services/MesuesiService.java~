@@ -1,0 +1,60 @@
+package services;
+
+import database.DBConnector;
+import models.dto.create.CreateMesuesi;
+import models.dto.update.UpdateMesuesi;
+import repositories.MesuesiRepository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MesuesiService {
+
+    private final MesuesiRepository repo = new MesuesiRepository();
+
+    public boolean shto(CreateMesuesi m) {
+        return repo.shto(m);
+    }
+
+    public boolean perditeso(UpdateMesuesi m) {
+        return repo.perditeso(m);
+    }
+
+    public boolean fshij(int id) {
+        return repo.fshij(id);
+    }
+    public List<CreateMesuesi> gjejTeGjithe() {
+        List<CreateMesuesi> lista = new ArrayList<>();
+
+        String sql = "SELECT emri, mbiemri, email, tel, roli, adresa_id FROM mesuesi";
+
+        try (Connection con = DBConnector.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                CreateMesuesi m = new CreateMesuesi(
+                        rs.getString("emri"),
+                        rs.getString("mbiemri"),
+                        rs.getString("email"),
+                        rs.getString("tel"),
+                        rs.getString("roli"),
+                        rs.getInt("adresa_id")
+                );
+                lista.add(m);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+
+    public CreateMesuesi gjejTeGjitheMesuesit() {
+    }
+}

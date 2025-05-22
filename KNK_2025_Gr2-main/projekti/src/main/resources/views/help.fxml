@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HelpController">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu text="File">
+               <items>
+                  <MenuItem fx:id="menuNew" onAction="#handleNew" text="New" />
+                  <Menu fx:id="menuOpen" onAction="#handleOpen" text="Open…" />
+                  <SeparatorMenuItem />
+                  <MenuItem fx:id="menuQuit" onAction="#handleQuit" text="Quit" />
+               </items>
+            </Menu>
+            <Menu text="Edit">
+               <items>
+                  <MenuItem fx:id="menuUndo" onAction="#handleUndo" text="Undo" />
+                  <MenuItem fx:id="menuRedo" onAction="#handleRedo" text="Redo" />
+                  <MenuItem fx:id="menuCut" onAction="#handleCut" text="Cut" />
+                  <MenuItem fx:id="menuCopy" onAction="#handleCopy" text="Copy" />
+                  <MenuItem fx:id="menuPaste" onAction="#handlePaste" text="Paste" />
+                  <MenuItem fx:id="menuSelectAll" onAction="#handleSelectAll" text="Select All" />
+               </items>
+            </Menu>
+            <Menu text="Help">
+               <items>
+                  <MenuItem fx:id="menuHelp" onAction="#handleHelp" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <AnchorPane prefHeight="105.0" prefWidth="1221.0" style="-fx-background-color: #264653;" styleClass="header" stylesheets="@style.css">
+         <children>
+            <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
+               <items>
+                  <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
+                  <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
+               </items>
+            </MenuButton>
+            <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="31.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="21.0">
+               <image>
+                  <Image url="@../images/ikona.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="115.0" layoutY="28.0" text="Help" textFill="WHITE" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="28.0">
+               <font>
+                  <Font name="Colonna MT" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane maxHeight="500.0" maxWidth="800.0" styleClass="login" stylesheets="@style.css">
+      
+          <children>
+      
+              <!-- Paneli i majtë me opsionet -->
+              <VBox layoutX="10.0" layoutY="20.0" spacing="10" />
+      
+                    <!-- Paneli i djathtë me tekstin përshkrues -->
+              <TextArea fx:id="txtContent" layoutX="359.0" layoutY="18.0" prefHeight="462.0" prefWidth="411.0" style="-fx-background-color: #2c3e50; -fx-text-fill: white;" wrapText="true" />
+               <Button layoutX="14.0" layoutY="206.0" onAction="#showPastrimi" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helppastrimifushave" />
+               <Button layoutX="14.0" layoutY="241.0" onAction="#showShfaqja" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpRaportet" />
+               <Button layoutX="14.0" layoutY="314.0" onAction="#showRegjistrimi" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpNotat" />
+               <Button layoutX="14.0" layoutY="277.0" onAction="#showLlogaritja" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpstatistikat" />
+               <Button layoutX="14.0" layoutY="170.0" onAction="#showPerdorimi" style="-fx-background-color: transparent; -fx-text-fill: #3498db;" text="%helpPerdorimi" />
+      
+          </children>
+      
+      </AnchorPane>
+   </children>
+</VBox>

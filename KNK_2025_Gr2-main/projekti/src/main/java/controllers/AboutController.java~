@@ -1,0 +1,35 @@
+package controllers;
+
+import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+public class AboutController {
+
+    @FXML
+    private ImageView logoImage;
+
+    @FXML
+    private LineChart<String, Number> lineChart;
+
+    public void initialize() {
+        // Vendosja e logos në ImageView
+        Image logo = new Image(getClass().getResourceAsStream("/images/logo.png"));
+        logoImage.setImage(logo);
+
+        // Vendosja e të dhënave në LineChart
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Progresi i Notave");
+
+        // Shto të dhënat që dëshiron të shfaqen
+        series.getData().add(new XYChart.Data<>("Janar", 4.2));
+        series.getData().add(new XYChart.Data<>("Shkurt", 4.5));
+        series.getData().add(new XYChart.Data<>("Mars", 3.9));
+        series.getData().add(new XYChart.Data<>("Prill", 4.6));
+        series.getData().add(new XYChart.Data<>("Maj", 4.7));
+
+        lineChart.getData().add(series);
+    }
+}

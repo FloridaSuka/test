@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextField?>
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsController">
+    <children>
+        <MenuBar>
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <!-- Nëse "Open Recent" është submenu, duhet të ketë children -->
+                        <Menu mnemonicParsing="false" text="Open Recent">
+                            <items>
+                                <!-- Shembull i submenu -->
+                                <MenuItem mnemonicParsing="false" text="Recent File 1" />
+                                <MenuItem mnemonicParsing="false" text="Recent File 2" />
+                            </items>
+                        </Menu>
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>   <AnchorPane styleClass="login" stylesheets="@style.css">
+            <children>
+                <AnchorPane layoutY="-1.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header" stylesheets="@style.css">
+                    <children>
+                        <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
+                            <items>
+                                <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
+                                <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
+                            </items>
+                        </MenuButton>
+                        <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="31.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="21.0">
+                            <image>
+                                <Image url="@../images/ikona.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="103.0" layoutY="28.0" text="EduMetrics" textFill="WHITE" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="28.0">
+                            <font>
+                                <Font name="Colonna MT" size="40.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutY="164.0" prefHeight="336.0" prefWidth="800.0" styleClass="center-pane">
+                    <children>
+                        <AnchorPane layoutX="218.0" prefHeight="336.0" prefWidth="364.0">
+                            <children>
+                                <Label layoutX="53.0" layoutY="0.0" text="%settingsId" />
+                                <Label layoutX="53.0" layoutY="45.0" text="%settingsEmri" />
+                                <Label layoutX="53.0" layoutY="90.0" text="%settingsMbiemri" />
+                                <Label layoutX="53.0" layoutY="135.0" text="%settingsEmail" />
+                                <Label layoutX="53.0" layoutY="180.0" text="%settingsUsername" />
+
+
+                                <Label fx:id="txtId" layoutX="161.0" layoutY="0.0" text="TEXT" textFill="#a1a1a1" />
+                                <Label fx:id="txtEmri" layoutX="161.0" layoutY="45.0" text="TEXT" textFill="#a1a1a1" />
+                                <Label fx:id="txtMbiemri" layoutX="161.0" layoutY="90.0" text="TEXT" textFill="#a1a1a1" />
+                                <TextField fx:id="txtEmail" layoutX="161.0" layoutY="125.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: #a1a1a1; -fx-font-size: 14px;" />
+                                <TextField fx:id="txtUsername" layoutX="161.0" layoutY="170.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: #a1a1a1; -fx-font-size: 14px;"/>
+
+
+                                <Button layoutX="203.0" layoutY="270.0" mnemonicParsing="false" onAction="#fshiLlogarine" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: crimson;" text="%fshiLlogarine" />
+                                <Button layoutX="37.0" layoutY="270.0" mnemonicParsing="false" onAction="#onForgotPassword" prefHeight="25.0" prefWidth="149.0" text="%btnChangePass" />
+                                <Button layoutX="288.0" layoutY="125.0" mnemonicParsing="false" onAction="#ndryshoEmail" text="%ndrysho" />
+                                <Button layoutX="288.0" layoutY="170.0" mnemonicParsing="false" onAction="#ndryshoUsername" text="%ndrysho" />
+
+
+                                <Line endX="100.0" layoutX="177.0" layoutY="17.0" opacity="0.3" startX="-131.0" stroke="#a8a3a3" />
+                                <Line endX="100.0" layoutX="177.0" layoutY="62.0" opacity="0.3" startX="-133.0" startY="1.52587890625E-5" stroke="#a8a3a3" />
+                                <Line endX="100.0" layoutX="177.0" layoutY="107.0" opacity="0.3" startX="-131.66665649414062" stroke="#a8a3a3" />
+                                <Line endX="100.0" layoutX="177.0" layoutY="152.0" opacity="0.3" startX="-132.33334350585938" stroke="#a8a3a3" />
+                                <Line endX="100.0" layoutX="177.0" layoutY="197.0" opacity="0.3" startX="-131.0" stroke="#a8a3a3" />
+                                <Line endX="100.0" layoutX="177.0" layoutY="257.0" opacity="0.3" startX="-131.0" stroke="#a8a3a3" />
+
+
+
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+                <fx:include source="globalView.fxml" />
+            </children>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </AnchorPane>
+    </children>
+</VBox>

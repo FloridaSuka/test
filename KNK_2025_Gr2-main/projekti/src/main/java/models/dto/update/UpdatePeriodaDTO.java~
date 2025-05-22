@@ -1,0 +1,4 @@
+package models.dto.update;
+
+public class UpdatePeriodaDTO {
+}

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fillWidth="false" minWidth="0.0" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MenaxhimiKlaseveController">
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <AnchorPane styleClass="login" stylesheets="@style.css">
+            <children>
+                <AnchorPane layoutY="-1.0" prefHeight="105.0" prefWidth="800.0" style="-fx-background-color: #264653;" styleClass="header" stylesheets="@style.css">
+                    <children>
+                        <MenuButton fx:id="menuLanguage" contentDisplay="TEXT_ONLY" layoutX="641.0" layoutY="32.0" mnemonicParsing="false" popupSide="TOP" prefHeight="41.0" prefWidth="119.0" styleClass="language" text="%txtLang" AnchorPane.rightAnchor="39.66666666666667" AnchorPane.topAnchor="32.0">
+                            <items>
+                                <MenuItem fx:id="menuAL" mnemonicParsing="true" text="ALB" />
+                                <MenuItem fx:id="menuEN" mnemonicParsing="false" text="ENG" />
+                            </items>
+                        </MenuButton>
+                        <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="31.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="21.0">
+                            <image>
+                                <Image url="@../images/ikona.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="103.0" layoutY="28.0" text="EduMetrics" textFill="WHITE" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="28.0">
+                            <font>
+                                <Font name="Colonna MT" size="40.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutY="164.0">
+                    <children>
+                        <AnchorPane layoutY="-1.0">
+                            <children>
+                                <TableView fx:id="tabelaKlasave">
+                                    <columns>
+                                        <TableColumn fx:id="colId" text="ID" />
+                                        <TableColumn fx:id="colNiveli" text="Niveli" />
+                                        <TableColumn fx:id="colParalelja" text="Paralelja" />
+                                        <TableColumn fx:id="colMesuesi" text="Mesuesi" />
+                                        <TableColumn fx:id="colDrejtimi" text="Drejtimi" />
+                                        <TableColumn fx:id="colShkolla" text="Shkolla" />
+                                    </columns>
+                                </TableView>
+
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="377.0" layoutY="-1.0" prefHeight="336.0" prefWidth="410.0">
+                            <children>
+                                <Label layoutX="83.0" layoutY="63.0" text="%klasa" AnchorPane.rightAnchor="230.0" />
+                                <TextField fx:id="txtNiveli" layoutX="217.0" layoutY="59.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="108.0" text="%_school.button" AnchorPane.rightAnchor="230.0" />
+                                <TextField fx:id="txtShkolla" layoutX="217.0" layoutY="108.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="153.0" text="%paralelja" AnchorPane.rightAnchor="230.0" />
+                                <TextField fx:id="txtParalelja" layoutX="217.0" layoutY="149.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="198.0" text="%addUserRadioTeacher" AnchorPane.rightAnchor="228.0" />
+                                <TextField fx:id="txtProfesori" layoutX="217.0" layoutY="194.0" AnchorPane.rightAnchor="43.333333333333314" />
+                                <Label layoutX="83.0" layoutY="243.0" text="%drejtimi" AnchorPane.rightAnchor="231.0" />
+                                <TextField fx:id="txtDrejtimi" layoutX="217.0" layoutY="239.0" AnchorPane.rightAnchor="43.66666666666666" />
+                                <Button layoutX="251.0" layoutY="286.0" onAction="#shtoKlasa" prefHeight="25.0" prefWidth="82.0" text="%_shto" />
+
+
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+                <fx:include source="globalView.fxml" />
+            </children>
+            <VBox.margin>
+                <Insets />
+            </VBox.margin>
+        </AnchorPane>
+    </children>
+</VBox>

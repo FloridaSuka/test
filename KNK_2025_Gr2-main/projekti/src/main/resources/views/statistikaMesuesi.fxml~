@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="500.0" prefWidth="800.0" spacing="0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatistikatMesuesiController">
+
+    <!-- MenuBar -->
+    <MenuBar VBox.vgrow="NEVER">
+        <menus>
+            <Menu text="File">
+                <items>
+                    <MenuItem text="New" />
+                    <MenuItem text="Open…" />
+                    <MenuItem text="Save" />
+                    <MenuItem text="Quit" />
+                </items>
+            </Menu>
+            <Menu text="Help">
+                <items>
+                    <MenuItem text="About" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+
+    <!-- Header / Navbar -->
+    <AnchorPane prefHeight="80.0" style="-fx-background-color: #264653;">
+        <children>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="20.0" layoutY="15.0" preserveRatio="true">
+                <image>
+                    <Image url="@../images/ikona.png" />
+                </image>
+            </ImageView>
+            <Label layoutX="80.0" layoutY="20.0" text="EduMetrics" textFill="WHITE">
+                <font>
+                    <Font name="Colonna MT" size="32.0" />
+                </font>
+            </Label>
+            <MenuButton fx:id="menuLanguage" layoutX="680.0" layoutY="20.0" prefWidth="100.0" text="%txtLang">
+                <items>
+                    <MenuItem fx:id="menuAL" text="ALB" />
+                    <MenuItem fx:id="menuEN" text="ENG" />
+                </items>
+            </MenuButton>
+        </children>
+    </AnchorPane>
+    <VBox alignment="TOP_RIGHT" prefHeight="420.0" prefWidth="800.0" spacing="5.0" style="-fx-background-color:linear-gradient(to right, #2e728d,#264653); -fx-padding: 5 10 10 10;">
+        <!-- Butoni Rifresko -->
+        <Button fx:id="btnRifresko" text="Rifresko" prefWidth="100" style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-weight: bold;" onAction="#onBtnRifreskoClicked" />
+
+        <!-- Grafik -->
+        <BarChart fx:id="barChart"
+                  legendSide="RIGHT"
+                  prefHeight="400.0" prefWidth="760.0"
+                  title="%notasipasgjinive"
+                  style="-fx-title-text-fill: white;">
+            <xAxis>
+                <CategoryAxis label="Nota" style="-fx-tick-label-font-size: 10px; -fx-label-fill: white; -fx-tick-label-fill: white;" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="%nrstudent"
+                            style="-fx-label-fill: white; -fx-tick-label-fill: white;" />
+            </yAxis>
+        </BarChart>
+
+        <!-- Statistikat në rresht horizontal -->
+        <HBox spacing="15" alignment="CENTER" prefWidth="760.0" style="-fx-padding: 20 0 0 20;">
+
+
+            <VBox alignment="CENTER" prefHeight="90.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+                <Label fx:id="lblTotalNxenesit" style="-fx-font-size: 32px; -fx-text-fill: orange; -fx-font-weight: bold;" text="0" />
+                <Label style="-fx-font-size: 14px; -fx-text-fill: #444;" text="%nrstudent" />
+            </VBox>
+
+
+            <VBox alignment="CENTER" prefHeight="90.0" prefWidth="240.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+                <Label fx:id="lblMesatare" style="-fx-font-size: 32px; -fx-text-fill: orange; -fx-font-weight: bold;" text="0" />
+                <Label style="-fx-font-size: 14px; -fx-text-fill: #444;" text="%notames" />
+            </VBox>
+
+
+
+        </HBox>
+        <fx:include source="globalView.fxml" />
+    </VBox>
+
+
+
+
+</VBox>
